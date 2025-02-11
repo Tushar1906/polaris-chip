@@ -23,73 +23,49 @@ export class MyCard extends LitElement {
     return css`
       :host {
         .card {
-  width: 400px;
-  height: 400px;
-  border: 1px;
-  background-color: lightblue;
-  text-align: center;
-  border-style: solid;
-  border-width: 10px;
-  border-color: red;
-  display: inline-block;
-}
+            width: 400px;
+            height: 400px;
+            border: 1px;
+            background-color: lightblue;
+            text-align: center;
+            border-style: solid;
+            border-width: 10px;
+            border-color: red;
+            display: inline-block;
+          }
 
-.card h2 {
-  text-align: center;
-  color: red;
-  font-style: italic;
-  font-weight: bold;
-}
-.card img {
-  width: 100px;
-  height: 150px;
-}
-.card p {
-  font-size: 1.25vw;
-  margin-bottom: 16px;
-}
-button {
-  padding: 10px;
-  border-radius: 100px;
-  border: 1px rigid;
-  border-width: 10px;
-  font-size: 1vw;
-  font-weight: bold;
-  margin: 5px 5px 5px 5px;
-}
-button:focus,
-button:hover {
-  background-color: blue;
-}
+            .card h2 {
+              text-align: center;
+              color: red;
+              font-style: italic;
+              font-weight: bold;
+            }
+            .card img {
+              width: 100px;
+              height: 150px;
+            }
+            .card p {
+              font-size: 1.25vw;
+              margin-bottom: 16px;
+            }
+            button {
+              padding: 10px;
+              border-radius: 100px;
+              border: 1px rigid;
+              border-width: 10px;
+              font-size: 1vw;
+              font-weight: bold;
+              margin: 5px 5px 5px 5px;
+            }
+            button:focus,
+            button:hover {
+              background-color: blue;
+            }
 
-.Fancy {
-  background-color: green;
-  color: #ff0099;
-}
-@media (min-width: 500px) and (max-width: 800px) {
-  .card button {
-    display: button;
-  }
-}
-
-@media (max-width: 500px) {
-  .card {
-    width: 90%;
-    padding: 12px;
-  }
-
-  .card img {
-    max-width: 90%;
-  }
-
-  .card h2 {
-    font-size: 1vw;
-  }
-
-  .card p {
-    font-size: 0.8vw;
-  }
-}
+            .Fancy {
+              background-color: green;
+              color: #ff0099;
+            }
 
       }
 
@@ -97,6 +73,7 @@ button:hover {
   }
 
   render() {
+
     return html`
     <div class="container">
   <div class="card">
