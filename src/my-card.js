@@ -14,9 +14,9 @@ export class MyCard extends LitElement {
 
   constructor() {
     super();
-    this.title = "My card";
-    this.image = "https://media.gq.com/photos/64249f0e187153589604b1f2/master/w_1920,c_limit/brycerld.jpg";
-    
+    this.title = "Bryce Harper";
+    this.image = "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_426,q_auto:best/v1/people/547180/headshot/67/current";
+    this.link = "https://www.mlb.com/player/bryce-harper-547180";
   }
 
   static get styles() {
@@ -39,6 +39,7 @@ export class MyCard extends LitElement {
               color: red;
               font-style: italic;
               font-weight: bold;
+              
             }
             .card img {
               width: 100px;
@@ -76,14 +77,15 @@ export class MyCard extends LitElement {
 
     return html`
     <div class="container">
-  <div class="card">
+    <div class="card">
 
-    <h2>Bryce Harper</h2>
-    <p>A first baseman for the philadelphia Phillies. A 2 time MVP still loking for his first world series </p>
-    <img src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_426,q_auto:best/v1/people/547180/headshot/67/current">
+    <h2 class="cardheader"><b>${this.title}</b></h2>
+    <slot></slot>
+    <img src=${this.image} alt=${this.title} />
+
     
     <p></p>
-    <a href="https://hax.psu.edu/">
+    <a href=${this.link} target="_blank">
       <button>Details</button>
     </a>
   </div>
@@ -95,6 +97,7 @@ export class MyCard extends LitElement {
     return {
       title: { type: String },
       image: { type: String },
+      link: { type: String},
 
     };
   }
