@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import { ref } from 'lit/directives/ref.js';
 
 /**
  * Now it's your turn. Here's what we need to try and do:
@@ -17,11 +18,18 @@ export class MyCard extends LitElement {
     this.title = "Bryce Harper";
     this.image = "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_426,q_auto:best/v1/people/547180/headshot/67/current";
     this.link = "https://www.mlb.com/player/bryce-harper-547180";
+    this.fancy = false;
+    this.text = "Bryce Harper is a professional baseball player for the Philadelphia Phillies. He has won the National League MVP award and has been selected to multiple All-Star games. Harper is known for his power hitting and strong arm in the outfield.";
   }
 
   static get styles() {
     return css`
-      :host {
+      :host([fancy]) {
+        display: block;
+        background-color: pink;
+        border: 2px solid fuchsia;
+        box-shadow: 10px 5px 5px red;
+      }
         .card {
             width: 400px;
             height: 400px;
@@ -68,7 +76,7 @@ export class MyCard extends LitElement {
               color: #ff0099;
             }
 
-      }
+      
 
     `;
   }
@@ -80,25 +88,43 @@ export class MyCard extends LitElement {
     <div class="card">
 
     <h2 class="cardheader"><b>${this.title}</b></h2>
-    <slot></slot>
+    
     <img src=${this.image} alt=${this.title} />
-
+    
+    <details ?open="${this.fancy}" @toggle="${this.openChanged}">
+      <summary>Description</summary>
+      <div>
+        <slot>${this.text}</slot>
+      </div>
+    </details>
     
     <p></p>
     <a href=${this.link} target="_blank">
-      <button>Details</button>
+      <button>Learn More</button>
     </a>
   </div>
 </div>
 `;
   }
 
+  
+  openChanged(e) {
+    console.log(e.newState);
+    if (e.newState === "open") {
+      this.fancy = true;
+    }
+    else {
+      this.fancy = false;
+    }
+  }
+
   static get properties() {
     return {
+      fancy: { type: Boolean, reflect: true },
       title: { type: String },
       image: { type: String },
       link: { type: String},
-
+      text: { type: String},
     };
   }
 }
