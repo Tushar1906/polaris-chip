@@ -24,8 +24,12 @@ export class MyCard extends LitElement {
 
   static get styles() {
     return css`
+      :host { 
+        display: inline-block; 
+      }
       :host([fancy]) {
         display: block;
+        display: inline-block;
         background-color: pink;
         border: 2px solid fuchsia;
         box-shadow: 10px 5px 5px red;
